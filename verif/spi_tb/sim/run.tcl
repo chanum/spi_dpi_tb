@@ -38,6 +38,7 @@ vlog -incr +incdir+${UVM_LIB} ${AGENTS}/spi_agent/spi_driver_bfm.sv -timescale 1
 vlog -incr +incdir+${UVM_LIB} ${UTILS}/interrupt/intr_pkg.sv -timescale 1ns/10ps -suppress 2263
 vlog -incr +incdir+${UVM_LIB} ${UTILS}/interrupt/intr_if.sv -timescale 1ns/10ps -suppress 2263
 vlog -incr +incdir+${UVM_LIB} ${UTILS}/interrupt/intr_bfm.sv -timescale 1ns/10ps -suppress 2263
+vlog ../../vip/utils/dpi/utils.c -ccflags -m64
 vlog -incr +incdir+${UVM_LIB} +incdir+../env ../env/spi_env_pkg.sv -suppress 2263
 vlog -incr +incdir+${UVM_LIB} +incdir+../sequences ../sequences/spi_bus_sequence_lib_pkg.sv -suppress 2263
 vlog -incr +incdir+${UVM_LIB} +incdir+../sequences ../sequences/spi_test_seq_lib_pkg.sv
@@ -51,6 +52,6 @@ vsim -debugdb \
     hvl_top hdl_top +UVM_TESTNAME=${TEST} \
     -suppress 8887
 
-# Generatre Report
-coverage report -detail 
-coverage report -html 
+# # Generatre Report
+# coverage report -detail 
+# coverage report -html 

@@ -20,6 +20,14 @@
 // Class Description:
 //
 //
+
+import "DPI-C" context function void c_method();
+export "DPI-C" function sv_method;
+
+function void sv_method();
+  $display("  [SV-Prog]  Hello World...!");
+endfunction: sv_method
+
 class spi_dpi_test extends spi_test_base;
   // UVM Factory Registration Macro
   `uvm_component_utils(spi_dpi_test)
@@ -47,9 +55,14 @@ task spi_dpi_test::run_phase(uvm_phase phase);
   set_seqs(t_seq);
 
   phase.raise_objection(this, "Test Started");
+
+  c_method();
+
   t_seq.n_times = 1;
   t_seq.start(null);
+  
   #100;
+  
   phase.drop_objection(this, "Test Finished");
 
 endtask: run_phase
