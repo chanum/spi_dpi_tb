@@ -47,6 +47,7 @@ task spi_dpi_test::run_phase(uvm_phase phase);
   set_seqs(t_seq);
 
   phase.raise_objection(this, "Test Started");
+  t_seq.n_times = 1;
   t_seq.start(null);
   #100;
   phase.drop_objection(this, "Test Finished");

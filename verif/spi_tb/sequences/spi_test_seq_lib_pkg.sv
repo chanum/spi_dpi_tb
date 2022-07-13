@@ -70,10 +70,10 @@ endclass: spi_vseq_base
 // and tests the interrupt handling
 //
 class config_interrupt_test extends spi_vseq_base;
-
   `uvm_object_utils(config_interrupt_test)
 
   logic[31:0] control;
+  int n_times = 10;
 
   function new(string name = "config_interrupt_test");
     super.new(name);
@@ -94,7 +94,7 @@ class config_interrupt_test extends spi_vseq_base;
 
     control = 0;
 
-    repeat(10) begin
+    repeat(n_times) begin
       spi_config.interrupt_enable = 1;
       spi_config.start(m_sequencer);
       control = spi_config.data;
